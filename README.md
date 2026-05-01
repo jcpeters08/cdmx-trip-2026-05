@@ -6,7 +6,7 @@ Live: https://jcpeters08.github.io/cdmx-trip-2026-05/
 
 ## What it is
 
-Single-page interactive briefing for the CDMX week. Built as a phone-first companion: countdown, day-by-day schedule, map of every booked location, hourly weather + UV, confirmation codes, pre-trip reading.
+Single-page interactive briefing for the CDMX week. Built as a phone-first companion: countdown, day-by-day schedule, map of every booked location, hourly weather + UV, confirmation codes.
 
 ## Stack
 

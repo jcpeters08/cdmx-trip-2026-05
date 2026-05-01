@@ -38,7 +38,7 @@ const PINS = [
   { name: "Koti Wellness Roma Norte", cat: "fitness",      lat: 19.4125040, lng: -99.1564762, addr: "Coahuila 44, Roma Norte", note: "Mon 5/4 · 15:00–15:50 thermocycling", approx: true },
   { name: "Smart Fit Roma Norte",    cat: "fitness",       lat: 19.4206459, lng: -99.1710355, addr: "Puebla 326, Roma Norte", note: "Workout option" },
   { name: "Cinépolis Diana",         cat: "entertainment", lat: 19.4258794, lng: -99.1715780, addr: "Reforma 423, Col. Cuauhtémoc", note: "Sun 5/3 · Devil Wears Prada 2 (SUB) 16:30" },
-  { name: "Cablebús — Constitución de 1917", cat: "transit", lat: 19.3448, lng: -99.0626, addr: "Línea 2 west terminus, Iztapalapa", note: "Tue 5/5 · 10:30 board east" },
+  { name: "Embarcadero Nuevo Nativitas", cat: "sightseeing", lat: 19.2527, lng: -99.0936, addr: "C. del Mercado 133, San Jerónimo, Xochimilco, 16420 CDMX", note: "Tue 5/5 · 2-hr trajinera ride · 750 MXN/hr walk-up" },
   { name: "Panadería Rosetta",       cat: "food",          lat: 19.4199737, lng: -99.1606103, addr: "Colima 179, Roma Norte", note: "Wed 5/6 · Teotihuacán pickup at 07:00" },
   { name: "Teotihuacán",             cat: "sightseeing",   lat: 19.6902654, lng: -98.8767276, addr: "Zona Arqueológica, San Juan Teotihuacán", note: "Wed 5/6 · 6.5-hr archaeologist tour" },
   { name: "MEX · Benito Juárez Intl",cat: "transit",       lat: 19.4342349, lng: -99.0733121, addr: "Calzada Ignacio Zaragoza 1075", note: "Sat 5/2 arrive · Fri 5/8 depart 08:40" },
@@ -101,19 +101,17 @@ const DAYS = [
     id: "tue",
     date: "Tue · May 5",
     iso: "2026-05-05",
-    title: "Cablebús Línea 2 with friend",
-    summary: "Iztapalapa cable-car ride east to Santa Marta + back. Mural views, Sierra de Santa Catarina.",
+    title: "Xochimilco trajineras with friend",
+    summary: "2-hr trajinera ride at Embarcadero Nuevo Nativitas. Walk-up @ 750 MXN/hr official tarifa. Tuesday = quiet, peaceful canals over the festive weekend chaos.",
     events: [
       { when: "07:30–09:00", title: "Workout", detail: "Smart Fit Roma Norte" },
       { when: "09:00–09:30", title: "Quick breakfast" },
-      { when: "~09:30", title: "Meet friend", detail: "At Colima 325 or directly at the station" },
-      { when: "09:45", title: "Uber to Constitución de 1917", detail: "Roma → Iztapalapa · ~25–40 min · ~$200–350 MXN" },
-      { when: "~10:30", title: "Top up Tarjeta MI · board east", detail: "3 cards (Jonathan + Jacob + friend) · cash at vending machines" },
-      { when: "10:30–11:15", title: "Ride east · transfer at Xalpa", detail: "Murals + Sierra de Santa Catarina + Popo on clear days" },
-      { when: "11:15–11:45", title: "Disembark Santa Marta", detail: "Brief walk + photos" },
-      { when: "11:45–12:30", title: "Return ride west", detail: "Different angle, different light" },
-      { when: "~12:45", title: "Uber back to Roma" },
-      { when: "~13:30", title: "Long lunch with friend", detail: "Roma options · Lardo, Café Nin, Páramo, Taquería Orinoco, Rosetta" },
+      { when: "~09:30", title: "Meet friend", detail: "At Colima 325 or directly at the embarcadero" },
+      { when: "09:45", title: "Uber to Embarcadero Nuevo Nativitas", detail: "Roma → Xochimilco · ~45–60 min · ~$250–400 MXN · type 'Embarcadero Nuevo Nativitas' into Uber" },
+      { when: "~10:45", title: "Pay at official kiosk", detail: "Walk past the price board to the kiosk · 750 MXN/hr per boat (flat rate up to 18 people) · cash preferred · ignore touts in parking lot" },
+      { when: "10:45–12:45", title: "2-hr trajinera ride", detail: "Chinampas + canals + axolotl-habitat detour depending on the remero's route. Vendor canoes pull alongside (food, micheladas, mariachi à la carte — quieter on a Tuesday)." },
+      { when: "~13:00", title: "Tip remero · Uber back to Roma", detail: "~50–100 MXN tip if the ride was good" },
+      { when: "~13:45", title: "Long lunch with friend", detail: "Roma options · Lardo, Café Nin, Páramo, Taquería Orinoco, Rosetta" },
       { when: "afternoon/evening", title: "Free / spontaneous" },
     ],
   },
@@ -231,35 +229,10 @@ const FLEX_TBD = [
   { item: "Aunt's Wed 5/6 ~17:00 dinner venue", note: "Time penciled, venue still to confirm with her" },
   { item: "Sat 5/2 night dinner", note: "Spontaneous near Hotel Geneve / Roma Norte" },
   { item: "Thu 5/7 send-off dinner", note: "Spontaneous, day-of pick. Reserved for Jonathan + Jacob alone." },
-  { item: "Tarjeta MI metro cards · 3x", note: "Buy + load with cash at Constitución de 1917 station Tue morning" },
+  { item: "MXN cash for Tue Xochimilco trip", note: "Pull pesos in Roma Mon 5/4 evening · ~1,500 MXN trajinera fee + ~500–1,000 buffer for vendor canoes + tip" },
 ];
 
-const READING = [
-  {
-    title: "Iztapalapa Mural program transforms gray into bursts of color",
-    src: "Mexico News Daily · Leigh Thelmadatter, Dec 2023",
-    note: "Background for Tue's Cablebús ride. ~10,000 murals across ~250 neighborhoods since 2018 — community-built urban-equity project, not tourism.",
-    url: "https://mexiconewsdaily.com/culture/iztapalapa-mural-program-transforms-grey-into-bursts-of-color/",
-  },
-  {
-    title: "Cerro de la Estrella National Park — Wikipedia",
-    src: "English Wikipedia",
-    note: "Aztec sacred mountain · New Fire Ceremony every 52 years pre-Conquest · today the Passion of Christ reenactment site (1M+ attendees).",
-    url: "https://en.wikipedia.org/wiki/Cerro_de_la_Estrella_National_Park",
-  },
-  {
-    title: "Cablebús — Wikipedia",
-    src: "English Wikipedia",
-    note: "System overview. Three lines today (GAM, Iztapalapa, Chapultepec). Why CDMX built them.",
-    url: "https://en.wikipedia.org/wiki/Cableb%C3%BAs",
-  },
-  {
-    title: "El Cerro de la Estrella e Iztapalapa, de guerras y conquistas",
-    src: "UNAM Noticonquista · Miguel Pérez Negrete (Spanish)",
-    note: "Deeper academic context. New Fire Ceremony 1507, strategic role during the conquest of Tenochtitlán.",
-    url: "https://www.noticonquista.unam.mx/amoxtli/2217/2200",
-  },
-];
+const READING = [];
 
 // =================== RENDERING ===================
 
