@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1a1410">
+<title>CDMX · May 2–8, 2026</title>
+<meta name="description" content="Personal trip companion for Jonathan + Jacob's CDMX week, May 2–8, 2026.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <span class="eyebrow">Sat May 2 → Fri May 8 · 2026</span>
+    <h1>CDMX · A Week in Roma Norte</h1>
+    <p class="subtitle">Six nights between Hotel Geneve and a Colima 325 loft. Haircuts, thermocycling, the City of Gods, the Iztapalapa cable car, and Devil Wears Prada 2 in Spanish.</p>
+    <div class="travelers">
+      <span class="dot"></span>
+      <span>Jonathan + Jacob · MSP ↔ PXM ↔ MEX</span>
+    </div>
+    <div class="countdown" id="countdown" aria-label="Countdown to PXM departure"></div>
+    <div class="countdown-note">Until PXM departure (Volaris Y4 361 · Sat 5/2 14:24 local)</div>
+    <div class="countdown-note" id="teo-cancel"></div>
+  </div>
+</header>
+
+<section id="weather-section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Weather — CDMX</h2>
+      <span class="meta">Open-Meteo · live · hourly forecast</span>
+    </div>
+    <div id="weather">
+      <div id="weather-summary" class="weather-summary"></div>
+      <div class="weather-hourly" aria-label="Hourly forecast, swipe to scroll">
+        <div id="weather-hourly-track" class="weather-hourly-track"></div>
+      </div>
+      <div class="muted small" style="margin-top:8px;">UV scale: low (<3) · moderate (3–5) · high (6–7) · very high (8+). Tinted SPF 50+ daily; Iztapalapa Tuesday at altitude — extra coverage.</div>
+    </div>
+  </div>
+</section>
+
+<section id="today">
+  <div class="container">
+    <div class="section-head">
+      <h2>Day-by-Day</h2>
+      <span class="meta">Tap a card to expand</span>
+    </div>
+    <div id="days"></div>
+  </div>
+</section>
+
+<section id="map-section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Map</h2>
+      <span class="meta">Tap a pin · filter by category</span>
+    </div>
+    <div id="map-filters" class="map-filters"></div>
+    <div id="map"></div>
+    <div class="muted small" style="margin-top:8px;">Pins use OpenStreetMap. Two locations (Hair Studio · Koti Wellness) pin to the verified street rather than the exact street number — addresses below the pin are still authoritative.</div>
+  </div>
+</section>
+
+<section id="booked">
+  <div class="container">
+    <div class="section-head">
+      <h2>Booked &amp; Locked</h2>
+      <span class="meta">Confirmation codes &amp; phone numbers</span>
+    </div>
+    <div id="booked-list" class="card"></div>
+  </div>
+</section>
+
+<section id="flex">
+  <div class="container">
+    <div class="section-head">
+      <h2>Flex / TBD</h2>
+      <span class="meta">Decide as the week unfolds</span>
+    </div>
+    <div id="flex-list" class="card"></div>
+  </div>
+</section>
+
+<section id="errands">
+  <div class="container">
+    <div class="section-head">
+      <h2>Mon Errand Cluster</h2>
+      <span class="meta">Brantano · Koti · derm · farmacia</span>
+    </div>
+    <div class="errand-grid">
+      <div class="errand-card">
+        <h4>Brantano · footwear</h4>
+        <p><b>Antara Polanco</b> — Av. Ejército Nacional 843-B, Local D-104. Sun–Thu 11:00–20:30 · Fri–Sat 11:00–21:00. Largest selection.</p>
+        <p class="meta">Closer alt: <b>Metrópoli Patriotismo</b> · Av. Patriotismo 229, Local L-05 · daily 11:00–20:30 · ~12 min Uber from Roma.</p>
+        <p class="meta">Far south: <b>Artz Pedregal</b> · Blvd. Adolfo Ruiz Cortines 3720 · only if pairing with another southside stop.</p>
+      </div>
+      <div class="errand-card">
+        <h4>Sunscreen pickup</h4>
+        <p><b>LRP Anthelios UVMune 400 Tinted SPF50+</b> — pick the <i>Tinted (con color)</i> variant.</p>
+        <p class="meta">Stocked at Farmacia Guadalajara · Farmacia San Pablo · Farmacias del Ahorro. Walk in to whichever's closest to Soprano Skin after Jacob's appt.</p>
+      </div>
+      <div class="errand-card">
+        <h4>Finacea Gel 15% — for Jonathan</h4>
+        <p>Azelaic acid · ~$239 MXN per 30 g (one online listing — confirm at counter).</p>
+        <p class="meta">Online catalogs flag as Fracción IV (Rx) but in practice it sells <b>OTC</b> at Farmacias Guadalajara · Farmacias del Ahorro · Benavides. Walk-in purchase, no derm Rx needed.</p>
+      </div>
+      <div class="errand-card">
+        <h4>Koti Wellness · 15:00</h4>
+        <p>Coahuila 44, Roma Norte · ~5 min walk from Colima 325 · 50-min private sauna + cold plunge · Jonathan only.</p>
+        <p class="meta">Booked via Acuity. Single-session pricing ~$400–500 MXN range (secondary sources — confirm).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="travel">
+  <div class="container">
+    <div class="section-head">
+      <h2>Airport &amp; Flights</h2>
+      <span class="meta">MEX = Benito Juárez · primary T1</span>
+    </div>
+    <div class="card">
+      <h3>Outbound · Sat 5/2</h3>
+      <div class="event">
+        <div class="when">14:24</div>
+        <div class="what">
+          <div class="title">Volaris Y4 361 PXM → MEX <span class="badge booked">booked</span></div>
+          <div class="detail">Both travelers, separate PNRs. Jonathan seat 39F, conf <b>QMNBNR</b>. Baggage: 1 personal + 1 carry-on + 1 checked 55 lb.</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="when">~15:45</div>
+        <div class="what">
+          <div class="title">Land MEX</div>
+          <div class="detail">Domestic claim, no customs. Out by ~16:30. Hotel by ~17:15–17:45 depending on Sat afternoon Zona Rosa traffic.</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:18px;">Return · Fri 5/8</h3>
+      <div class="event">
+        <div class="when">~06:00</div>
+        <div class="what">
+          <div class="title">Uber to MEX</div>
+          <div class="detail">Verify terminal on Volaris app night before — primary T1, intl check-in <b>Sala F1</b> or <b>Sala F3</b> per AICM. 45–60 min traffic + 2 hr intl check-in buffer.</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="when">08:40</div>
+        <div class="what">
+          <div class="title">Volaris Y4 760 MEX → DEN <span class="badge booked">booked</span></div>
+          <div class="detail">Lands 12:19 MT.</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="when">17:38</div>
+        <div class="what">
+          <div class="title">Frontier 2113 DEN → MSP <span class="badge booked">booked</span></div>
+          <div class="detail">Lands 19:44 CT.</div>
+        </div>
+      </div>
+      <div style="margin-top:14px;" class="flex-row">
+        <a class="link-btn" href="https://www.volaris.com/" target="_blank" rel="noopener">Volaris ↗</a>
+        <a class="link-btn" href="https://www.flyfrontier.com/" target="_blank" rel="noopener">Frontier ↗</a>
+        <a class="link-btn" href="https://aeropuerto-mex.com/en/terminals" target="_blank" rel="noopener">AICM terminals ↗</a>
+        <span class="muted small">Travel card: Capital One Venture X</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reading">
+  <div class="container">
+    <div class="section-head">
+      <h2>Pre-Trip Reading</h2>
+      <span class="meta">~30 min total · do Mon night before Cablebús</span>
+    </div>
+    <div id="reading-list" class="card"></div>
+    <div class="note-box info" style="margin-top:14px;">
+      <b>Why this matters:</b> Iztapalapa is the most populous CDMX borough and historically one of the most marginalized. The cable car + mural project are explicit acts of urban equity, not tourism. That's the lens that makes Tuesday's ride more than a scenic gondola.
+    </div>
+  </div>
+</section>
+
+<section id="post">
+  <div class="container">
+    <div class="section-head">
+      <h2>After May 8</h2>
+      <span class="meta">Photos &amp; notes go here</span>
+    </div>
+    <div class="placeholder">
+      Coming back to fill in: highlights, what to skip, budget actuals, would-go-back picks.
+    </div>
+  </div>
+</section>
+
+<nav class="bottom-nav" aria-label="Quick nav">
+  <a href="#today"><span class="icon">▤</span><span>Days</span></a>
+  <a href="#map-section"><span class="icon">◎</span><span>Map</span></a>
+  <a href="#booked"><span class="icon">✓</span><span>Booked</span></a>
+  <a href="#weather-section"><span class="icon">☀</span><span>Weather</span></a>
+  <a href="#reading"><span class="icon">▦</span><span>Reading</span></a>
+</nav>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="app.js"></script>
+</body>
+</html>
