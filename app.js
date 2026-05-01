@@ -752,19 +752,42 @@ function renderDeepDives() {
     panel.innerHTML = buildDiveHtml(dive);
   });
 
-  // Tab switching
+  // Tab switching — also URL-routable so each dive is bookmarkable.
+  function activateTab(target) {
+    if (!target) return;
+    $$(".tab").forEach(t => {
+      const active = t.dataset.tab === target;
+      t.classList.toggle("active", active);
+      t.setAttribute("aria-selected", active ? "true" : "false");
+    });
+    $$(".tab-panel").forEach(p => {
+      p.classList.toggle("active", p.id === `panel-${target}`);
+    });
+  }
+
   $$(".tab").forEach(tab => {
     tab.addEventListener("click", () => {
       const target = tab.dataset.tab;
-      $$(".tab").forEach(t => {
-        const active = t === tab;
-        t.classList.toggle("active", active);
-        t.setAttribute("aria-selected", active ? "true" : "false");
-      });
-      $$(".tab-panel").forEach(p => {
-        p.classList.toggle("active", p.id === `panel-${target}`);
-      });
+      activateTab(target);
+      // Update URL hash without scrolling
+      if (history.replaceState) {
+        history.replaceState(null, "", `#dive=${target}`);
+      }
     });
+  });
+
+  // Activate from URL hash on initial load (e.g. /#dive=teotihuacan)
+  const m = window.location.hash.match(/dive=([\w-]+)/);
+  if (m && DEEP_DIVES[m[1]]) {
+    activateTab(m[1]);
+    // Scroll the deep-dives section into view so the user lands at the right place
+    setTimeout(() => $("#deep-dives")?.scrollIntoView({ behavior: "instant", block: "start" }), 50);
+  }
+
+  // Listen for hash changes (back/forward navigation)
+  window.addEventListener("hashchange", () => {
+    const m2 = window.location.hash.match(/dive=([\w-]+)/);
+    if (m2 && DEEP_DIVES[m2[1]]) activateTab(m2[1]);
   });
 }
 
