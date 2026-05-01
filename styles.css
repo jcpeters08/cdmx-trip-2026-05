@@ -887,3 +887,46 @@ section:last-of-type { border-bottom: 0; }
   margin-bottom: 4px;
 }
 .practical-cell .value { font-size: 14px; color: var(--text); font-weight: 500; line-height: 1.4; }
+
+/* ============================================================
+   LIGHT-MODE OVERRIDES — placed at END so they win the cascade.
+   The base styles set color: var(--cream) on many headings, which
+   maps to a near-white in light mode and renders invisibly on the
+   light cream background. Force dark text where contrast matters.
+   ============================================================ */
+@media (prefers-color-scheme: light) {
+  .hero-title {
+    color: #2a1f17;
+    background: linear-gradient(160deg, #2a1f17 0%, #8a4a32 60%, #d97757 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 20px rgba(217, 119, 87, 0.15);
+  }
+  .hero-tagline { color: #8a5018; }
+  .hero .subtitle { color: #5a4632; }
+  .section-head h2 { color: #2a1f17; }
+  .section-head { border-bottom-color: rgba(108, 80, 60, 0.18); }
+  .dive-hero { background: linear-gradient(155deg, #ffffff 0%, #faf2e6 100%); border-color: rgba(108, 80, 60, 0.18); }
+  .dive-hero h2.dive-title { color: #2a1f17; }
+  .dive-hero .lede { color: #3d2f23; }
+  .day-card .day-title { color: #2a1f17; }
+  .day-card { background: #ffffff; }
+  .day-card:hover { box-shadow: 0 4px 16px rgba(108, 80, 60, 0.12); }
+  .food-card { background: #faf2e6; }
+  .food-card h4 { color: #2a1f17; }
+  .food-card .why { color: #3d2f23; }
+  .booked-item .name { color: #2a1f17; }
+  .countdown-cell { background: #ffffff; }
+  .countdown-cell .num { color: var(--terracotta); }
+  .practical-cell { background: #faf2e6; }
+  .practical-cell .value { color: #2a1f17; }
+  .dive-section { background: #ffffff; }
+  .tab.active { color: #2a1f17; }
+  .tab:hover { color: #2a1f17; }
+  .bottom-nav {
+    background: rgba(255, 255, 255, 0.85);
+    border-top-color: rgba(108, 80, 60, 0.2);
+  }
+  .bottom-nav a:hover, .bottom-nav a:active { color: #2a1f17; }
+}
