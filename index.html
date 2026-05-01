@@ -64,6 +64,27 @@
   </div>
 </section>
 
+<section id="deep-dives">
+  <div class="container">
+    <div class="section-head">
+      <h2>Deep Dives</h2>
+      <span class="meta">Tap a topic — facts, photos, food</span>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Deep dive topics">
+      <button class="tab active" data-tab="xochimilco" role="tab" aria-selected="true">Xochimilco</button>
+      <button class="tab" data-tab="teotihuacan" role="tab" aria-selected="false">Teotihuacán</button>
+      <button class="tab" data-tab="roma-norte" role="tab" aria-selected="false">Roma Norte</button>
+      <button class="tab" data-tab="hotel-geneve" role="tab" aria-selected="false">Hotel Geneve · Zona Rosa</button>
+    </div>
+    <div class="tab-panels">
+      <div class="tab-panel active" id="panel-xochimilco" role="tabpanel"></div>
+      <div class="tab-panel" id="panel-teotihuacan" role="tabpanel"></div>
+      <div class="tab-panel" id="panel-roma-norte" role="tabpanel"></div>
+      <div class="tab-panel" id="panel-hotel-geneve" role="tabpanel"></div>
+    </div>
+  </div>
+</section>
+
 <section id="booked">
   <div class="container">
     <div class="section-head">
@@ -188,6 +209,7 @@
   <a href="#map-section"><span class="icon">◎</span><span>Map</span></a>
   <a href="#booked"><span class="icon">✓</span><span>Booked</span></a>
   <a href="#weather-section"><span class="icon">☀</span><span>Weather</span></a>
+  <a href="#deep-dives"><span class="icon">▦</span><span>Dives</span></a>
 </nav>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
