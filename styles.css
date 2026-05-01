@@ -110,6 +110,25 @@ a:hover { text-decoration: underline; opacity: 0.85; }
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+@media (prefers-color-scheme: light) {
+  .hero-title {
+    /* In light mode, the cream-to-gold gradient washes out. Use a rich
+       terracotta-to-deep-warm-brown gradient that has dramatic contrast. */
+    color: #2a1f17;
+    background: linear-gradient(160deg, #2a1f17 0%, #8a4a32 60%, #d97757 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 20px rgba(217, 119, 87, 0.18);
+  }
+  .hero-tagline { color: #8a5018; }
+  .hero .subtitle { color: #5a4632; }
+  .section-head h2 { color: #2a1f17; }
+  .section-head { border-bottom-color: rgba(108, 80, 60, 0.2); }
+  .dive-hero h2.dive-title { color: #2a1f17; }
+  .day-card .day-title { color: #2a1f17; }
+  .food-card h4 { color: #2a1f17; }
+}
 .hero-tagline {
   font-family: ui-serif, "New York", Charter, "Iowan Old Style", Georgia, serif;
   font-style: italic;
