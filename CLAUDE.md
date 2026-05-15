@@ -72,7 +72,7 @@ External services (no API keys):
 - **Map fit-bounds excludes Teotihuacán.** `markers.filter(m => m.getLatLng().lat < 19.5)` — Teo at 19.69 would skew bounds north (`renderMap`).
 - **Day-card auto-open:** if no `DAYS[i].iso` matches today's local date, the first card auto-opens so first load isn't 7 collapsed cards (`renderDays`).
 - **Light-mode hero gradient washed out** until `45e1d1b` added a darker terracotta-to-warm-brown override. If you change hero background, re-test light mode.
-- **Tue 5/5 deployed plan ≠ what actually happened.** The Tue card was first authored as Cablebús, swapped to Xochimilco mid-build (commit `4f2047a`), and shipped as Xochimilco — but per Jonathan post-trip, **neither happened**. Treat the Tue 5/5 events array as a planning artifact, not a post-trip log. The day's actual itinerary was never backfilled into this repo.
+- **Tue 5/5 is the only day that diverged.** The Tue card was first authored as Cablebús, swapped to Xochimilco mid-build (commit `4f2047a`), and shipped as Xochimilco — but per Jonathan post-trip, **neither happened**. The other six days (Sat/Sun/Mon/Wed/Thu/Fri) reflect what actually occurred. Treat only the Tue 5/5 events array as a planning artifact; the day's actual itinerary was never backfilled.
 
 ## Status
 
